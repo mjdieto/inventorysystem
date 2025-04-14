@@ -1,0 +1,127 @@
+<?php
+  ob_start();
+  require_once('includes/load.php');
+  if($session->isUserLoggedIn(true)) { redirect('home.php', false); }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0TkW3t5S4T1ON1sdz8a6jzHkFq0RbU13+rtF3oIThp13q5V7" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-page {
+            width: 100%;
+            max-width: 400px;
+            margin: 180px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .login-page h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: red;
+        }
+
+        .login-page p {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            height: 30px;
+            width: 290px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        .btn-info {
+            background-color:red;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            width: 100%;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: darkred;
+        }
+
+        .text-center {
+            margin-bottom: 20px;
+        }
+
+        .login-page .footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .alert {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-page">
+    <div class="text-center">
+       <h1>Welcome</h1>
+       <p>Sign in to start your session</p>
+    </div>
+    <?php echo display_msg($msg); ?>
+
+    <form method="post" action="auth_v2.php" class="clearfix">
+        <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Login</button>
+        </div>
+    </form>
+</div>
+
+<!-- Optional JS Libraries for Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
